@@ -10,76 +10,40 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:id="@+id/relLayout">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/image_border"
+        android:layout_centerInParent="true"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="500dp"
+            android:src="@mipmap/woman1"
+            android:id="@+id/mainImage"
+            />
 
-        <CheckBox
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Harry Potter"
-            android:id="@+id/checkboxHarry"
-            android:checked="true"
-            />
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Matrix"
-            android:id="@+id/checkboxMatrix"
-            android:checked="true"
-            android:layout_toEndOf="@+id/checkboxHarry"
-            android:layout_alignBottom="@+id/checkboxHarry"
-            />
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Avatar"
-            android:id="@+id/checkboxAvatar"
-            android:checked="true"
-            android:layout_toEndOf="@+id/checkboxMatrix"
-            />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/mainImage">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="none"
+                android:layout_marginLeft="100dp"
+                android:src="@drawable/ic_action_name" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="none"
+                android:src="@drawable/ic_action_name" />
+        </RelativeLayout>
+
     </RelativeLayout>
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/radioGroup"
-        android:layout_below="@+id/relLayout">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:text="Married"
-            android:checked="true"
-            android:id="@+id/married" />
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:text="Single"
-            android:id="@+id/single" />
-    </RadioGroup>
-
-    <ProgressBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/radioGroup"
-        android:layout_centerHorizontal="true"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:progress="0"
-        android:id="@+id/progressBar"
-        />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_action_name"
-        android:layout_below="@+id/radioGroup"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        />
-
 
 </RelativeLayout>

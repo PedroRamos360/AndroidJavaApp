@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         TextView firstOutput = findViewById(R.id.firstOutput);
         TextView lastOutput = findViewById(R.id.lastOutput);
         TextView emailOutput = findViewById(R.id.emailOutput);
-        firstOutput.setText(firstName.getText().toString());
-        lastOutput.setText(lastName.getText().toString());
-        emailOutput.setText(email.getText().toString());
+        firstOutput.setText("First Name: " + firstName.getText().toString());
+        lastOutput.setText("Last Name: " + lastName.getText().toString());
+        emailOutput.setText("Email: " + email.getText().toString());
     }
 }

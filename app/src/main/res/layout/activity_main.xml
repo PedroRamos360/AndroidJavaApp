@@ -10,27 +10,28 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="App de Relacionamento"
+        android:text="Tinder 2"
         android:textSize="30dp"
         android:layout_marginTop="20dp"
+        android:textColor="#FE565E"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
-/>
+    />
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/image_border"
-        android:layout_centerInParent="true"
+        android:layout_marginTop="100dp"
         >
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
-            android:layout_height="500dp"
-            android:src="@mipmap/woman1"
             android:id="@+id/mainImage"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="480dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/woman1" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -42,17 +43,22 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="none"
+                android:background="@color/design_default_color_surface"
                 android:layout_marginLeft="100dp"
-                android:src="@drawable/ic_action_name" />
+                android:src="@drawable/ic_like" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="none"
-                android:src="@drawable/ic_action_name" />
+                android:background="@color/design_default_color_surface"
+                android:src="@drawable/ic_dislike" />
         </RelativeLayout>
-
     </RelativeLayout>
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation_menu"
+        android:layout_alignParentBottom="true"
+        />
 </RelativeLayout>

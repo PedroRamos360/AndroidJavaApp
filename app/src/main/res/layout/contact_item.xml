@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:id="@+id/parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/contactImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/woman1" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Name"
+            android:textSize="30dp"
+            android:id="@+id/contactName"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last message preview..."
+            android:textSize="20dp"
+            android:layout_marginTop="40dp"
+            android:id="@+id/previewText"
+            android:textColor="@color/material_dynamic_secondary70"
+            />
+    </RelativeLayout>
+
+
+</RelativeLayout>

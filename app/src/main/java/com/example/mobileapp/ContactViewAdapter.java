@@ -27,6 +27,7 @@ public class ContactViewAdapter extends RecyclerView.Adapter<ContactViewAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtName.setText(contacts.get(position).getName());
+        holder.lastMessage.setText(contacts.get(position).getLastMessage());
     }
 
     @Override
@@ -41,9 +42,11 @@ public class ContactViewAdapter extends RecyclerView.Adapter<ContactViewAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView txtName;
+        private TextView lastMessage;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtName = itemView.findViewById(R.id.contactName);
+            lastMessage = itemView.findViewById(R.id.previewText);
         }
     }
 }

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MobileApp</string>
     <string name="button">Button</string>
+    <array name="countries">
+        <item>Brazil</item>
+        <item>Norway</item>
+        <item>Russia</item>
+    </array>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,11 +28,6 @@ public class Messages extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.messages);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.messages), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
         BottomNavigationView navbar = findViewById(R.id.bottom_navigation);
         navbar.getMenu().findItem(R.id.navigation_profile).setChecked(true);
         navbar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -52,8 +49,7 @@ public class Messages extends AppCompatActivity {
         ContactViewAdapter adapter = new ContactViewAdapter();
         adapter.setContacts(contacts);
         contactsRecView.setAdapter(adapter);
-        // the following line crashes the application
-        //contactsRecView.setLayoutManager(new LinearLayoutManager(this));
+        contactsRecView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void hideSystemUI() {

@@ -28,28 +28,29 @@ public class Messages extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.messages);
-        BottomNavigationView navbar = findViewById(R.id.bottom_navigation);
-        navbar.getMenu().findItem(R.id.navigation_profile).setChecked(true);
-        navbar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if (menuItem.getItemId() == R.id.navigation_search) {
-                    Intent intent = new Intent(Messages.this, MainActivity.class);
-                    startActivity(intent);
-                }
-                return false;
-            }
-        });
+        handleBarNavigation();
         hideSystemUI();
         contactsRecView = findViewById(R.id.contactsRecView);
         ArrayList<Contact> contacts = new ArrayList<>();
-        contacts.add(new Contact("Margot Robbie", "Oi, tudo bem?", "@mipmap/woman1"));
-        contacts.add(new Contact("Margot Robbie", "Oi, tudo bem?", "@mipmap/woman1"));
-        contacts.add(new Contact("Margot Robbie", "Oi, tudo bem?", "@mipmap/woman1"));
+        contacts.add(new Contact("Emily Anderson", "Oi, tudo bem?", R.mipmap.woman1));
+        contacts.add(new Contact("Sophia Martinez", "Oi, tudo bem?", R.mipmap.woman2));
+        contacts.add(new Contact("Isabella Nguyen", "Oi, tudo bem?", R.mipmap.woman4));
         ContactViewAdapter adapter = new ContactViewAdapter();
         adapter.setContacts(contacts);
         contactsRecView.setAdapter(adapter);
         contactsRecView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void handleBarNavigation() {
+        BottomNavigationView navbar = findViewById(R.id.bottom_navigation);
+        navbar.getMenu().findItem(R.id.navigation_matches).setChecked(true);
+        navbar.setOnItemSelectedListener(menuItem -> {
+            if (menuItem.getItemId() == R.id.navigation_search) {
+                Intent intent = new Intent(Messages.this, MainActivity.class);
+                startActivity(intent);
+            }
+            return false;
+        });
     }
 
     private void hideSystemUI() {

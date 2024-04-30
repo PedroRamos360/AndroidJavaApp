@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ContactViewAdapter extends RecyclerView.Adapter<ContactViewAdapter.ViewHolder> {
     private ArrayList<Contact> contacts = new ArrayList<>();
     public ContactViewAdapter() {
@@ -28,6 +30,13 @@ public class ContactViewAdapter extends RecyclerView.Adapter<ContactViewAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtName.setText(contacts.get(position).getName());
         holder.lastMessage.setText(contacts.get(position).getLastMessage());
+        holder.profilePicture.setImageResource(contacts.get(position).getResourceId());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Contact contact = contacts.get(position);
+            }
+        });
     }
 
     @Override
@@ -43,10 +52,12 @@ public class ContactViewAdapter extends RecyclerView.Adapter<ContactViewAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView txtName;
         private TextView lastMessage;
+        private CircleImageView profilePicture;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtName = itemView.findViewById(R.id.contactName);
             lastMessage = itemView.findViewById(R.id.previewText);
+            profilePicture = itemView.findViewById(R.id.contactImage);
         }
     }
 }

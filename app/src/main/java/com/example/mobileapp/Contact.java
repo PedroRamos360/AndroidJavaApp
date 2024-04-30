@@ -3,12 +3,12 @@ package com.example.mobileapp;
 public class Contact {
     private String name;
     private String lastMessage;
-    private String imageUrl;
+    private int resourceId;
 
-    public Contact(String name, String lastMessage, String imageUrl) {
+    public Contact(String name, String lastMessage, int resourceId) {
         this.name = name;
         this.lastMessage = lastMessage;
-        this.imageUrl = imageUrl;
+        this.resourceId = resourceId;
     }
 
     public String getName() {
@@ -18,11 +18,6 @@ public class Contact {
     public String getLastMessage() {
         return lastMessage;
     }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -31,8 +26,12 @@ public class Contact {
         this.lastMessage = lastMessage;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public int getResourceId() {
+        return resourceId;
+    }
+
+    public void setResourceId(int resourceId) {
+        this.resourceId = resourceId;
     }
 
     @Override
@@ -40,7 +39,7 @@ public class Contact {
         return "Contact{" +
                 "name='" + name + '\'' +
                 ", lastMessage='" + lastMessage + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
+                ", resourceId='" + resourceId + '\'' +
                 '}';
     }
 }

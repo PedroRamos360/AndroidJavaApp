@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="Search"
         android:textSize="30dp"
         android:layout_marginTop="20dp"
         android:textColor="#FE565E"
@@ -28,7 +28,8 @@
         />
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        >
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="580dp"
@@ -39,16 +40,13 @@
             android:background="@drawable/image_border"
             android:layout_marginTop="100dp"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/likeFeedbackText"
-                android:text="LIKE!"
-                android:textStyle="bold"
-                android:textSize="90dp"
-                android:textColor="#36EF3F"
-                android:layout_centerVertical="true"
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:id="@+id/likeFeedbackImage"
+                android:src="@drawable/ic_like"
                 android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 />
         </RelativeLayout>
         <RelativeLayout

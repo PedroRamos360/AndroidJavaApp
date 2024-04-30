@@ -4,6 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout backgroundLikeFeedback;
     List<Integer> peopleImages;
     ImageView mainImage;
-    TextView likeFeedbackText;
+    ImageView likeFeedbackImage;
     private int currentIndex = 0;
     private int swipeIndex = 0;
     @Override
@@ -46,26 +49,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navbar = findViewById(R.id.bottom_navigation);
-        navbar.getMenu().findItem(R.id.navigation_search).setChecked(true);
-        navbar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if (menuItem.getItemId() == R.id.navigation_profile) {
-                    Intent intent = new Intent(MainActivity.this, Messages.class);
-                    startActivity(intent);
-                }
-                return false;
-            }
-        });
+        handleBarNavigation();
         hideSystemUI();
         loadPeopleImages();
         gestureDetector = new GestureDetector(this, new MyGestureListener());
         imageContainer = findViewById(R.id.imageContainer);
         mainImage = findViewById(R.id.mainImage);
         backgroundLikeFeedback = findViewById(R.id.backgroundLikeFeedback);
-        likeFeedbackText = findViewById(R.id.likeFeedbackText);
         mainImage.setImageResource(peopleImages.get(currentIndex));
+        likeFeedbackImage = findViewById(R.id.likeFeedbackImage);
+    }
+
+    private void handleBarNavigation() {
+        BottomNavigationView navbar = findViewById(R.id.bottom_navigation);
+        navbar.getMenu().findItem(R.id.navigation_search).setChecked(true);
+        navbar.setOnItemSelectedListener(menuItem -> {
+            if (menuItem.getItemId() == R.id.navigation_matches) {
+                Intent intent = new Intent(MainActivity.this, Messages.class);
+                startActivity(intent);
+            }
+            return false;
+        });
     }
 
     private void loadPeopleImages() {
@@ -123,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
             imageContainer.setVisibility(View.GONE);
             TextView warnText = findViewById(R.id.noPeopleWarn);
             warnText.setVisibility(View.VISIBLE);
+            backgroundLikeFeedback.setVisibility(View.GONE);
+            likeFeedbackImage.setVisibility(View.GONE);
             return;
         }
         mainImage.setImageResource(peopleImages.get(currentIndex));
@@ -143,15 +149,13 @@ public class MainActivity extends AppCompatActivity {
                         Math.abs(diffX) > SWIPE_THRESHOLD &&
                         Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
                     if (diffX > 0) {
-                        animateSwipe(imageContainer, getScreenWidth(MainActivity.this));
-                        likeFeedbackText.setText("LIKE!");
-                        likeFeedbackText.setTextColor("#36EF3F");
-                        backgroundLikeFeedback.setBackgroundColor("#2db732");
+                        animateSwipe(imageContainer, getScreenWidth(MainActivity.this) * 2);
+                        likeFeedbackImage.setImageResource(R.drawable.ic_like);
+                        backgroundLikeFeedback.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#2db732")));
                     } else {
-                        animateSwipe(imageContainer, -getScreenWidth(MainActivity.this));
-                        likeFeedbackText.setText("DISLIKE!");
-                        likeFeedbackText.setTextColor("#EF3636");
-                        backgroundLikeFeedback.setBackgroundColor("#CB3535");
+                        animateSwipe(imageContainer, -getScreenWidth(MainActivity.this) * 2);
+                        likeFeedbackImage.setImageResource(R.drawable.ic_dislike);
+                        backgroundLikeFeedback.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#CB3535")));
                     }
                     return true;
                 }

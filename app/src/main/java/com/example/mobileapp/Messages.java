@@ -29,7 +29,6 @@ public class Messages extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.messages);
         handleBarNavigation();
-        hideSystemUI();
         contactsRecView = findViewById(R.id.contactsRecView);
         ArrayList<Contact> contacts = new ArrayList<>();
         contacts.add(new Contact("Emily Anderson", "Oi, tudo bem?", R.mipmap.woman1));
@@ -48,16 +47,11 @@ public class Messages extends AppCompatActivity {
             if (menuItem.getItemId() == R.id.navigation_search) {
                 Intent intent = new Intent(Messages.this, MainActivity.class);
                 startActivity(intent);
+            } else if (menuItem.getItemId() == R.id.navigation_profile) {
+                Intent intent = new Intent(Messages.this, Profile.class);
+                startActivity(intent);
             }
             return false;
         });
-    }
-
-    private void hideSystemUI() {
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_IMMERSIVE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
 }

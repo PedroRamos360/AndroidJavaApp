@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         handleBarNavigation();
-        hideSystemUI();
         loadPeopleImages();
         gestureDetector = new GestureDetector(this, new MyGestureListener());
         imageContainer = findViewById(R.id.imageContainer);
@@ -66,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
         navbar.setOnItemSelectedListener(menuItem -> {
             if (menuItem.getItemId() == R.id.navigation_matches) {
                 Intent intent = new Intent(MainActivity.this, Messages.class);
+                startActivity(intent);
+            } else if (menuItem.getItemId() == R.id.navigation_profile) {
+                Intent intent = new Intent(MainActivity.this, Profile.class);
                 startActivity(intent);
             }
             return false;
@@ -83,14 +85,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         return gestureDetector.onTouchEvent(event);
-    }
-
-    private void hideSystemUI() {
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_IMMERSIVE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
 
     private void animateSwipe(final View view, float translateX) {
@@ -141,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            System.out.println("on fling");
             try {
                 float diffY = e2.getY() - e1.getY();
                 float diffX = e2.getX() - e1.getX();
